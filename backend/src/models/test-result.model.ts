@@ -1,21 +1,42 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-// Interface representing a test result document
 export interface ITestResult extends Document {
   url: string;
   timestamp: Date;
-  summary: {
+  testType: 'axe' | 'lighthouse';
+  axeSummary?: {
     violations: number;
     passes: number;
     incomplete: number;
     inapplicable: number;
     score: number;
   };
-  results: {
+  axeResults?: {
     violations: any[];
     passes: any[];
     incomplete: any[];
     inapplicable: any[];
+  };
+  lighthouseScores?: {
+    performance: number;
+    accessibility: number;
+    seo: number;
+    bestPractices: number;
+  };
+  lighthouseMetrics?: {
+    timing: {
+      firstContentfulPaint: number;
+      largestContentfulPaint: number;
+      timeToInteractive: number;
+      speedIndex: number;
+      totalBlockingTime: number;
+      cumulativeLayoutShift: number;
+    };
+    resources: {
+      total: number;
+      byType: Map<string, number>;
+      transferSize: number;
+    };
   };
   testEngine: {
     name: string;
@@ -23,29 +44,50 @@ export interface ITestResult extends Document {
   };
 }
 
-// Schema definition
 const TestResultSchema: Schema = new Schema({
-  url: {
-    type: String,
-    required: true,
-    index: true
-  },
-  timestamp: {
-    type: Date,
-    default: Date.now
-  },
-  summary: {
+  url: { type: String, required: true, index: true },
+  timestamp: { type: Date, default: Date.now },
+  testType: { type: String, enum: ['axe', 'lighthouse'], required: true },
+  axeSummary: {
     violations: Number,
     passes: Number,
     incomplete: Number,
     inapplicable: Number,
     score: Number
   },
-  results: {
-    violations: Array,
+  axeResults: {
+    violations: [{
+      id: String,
+      impact: String,
+      tags: [String],
+      nodes: Array,
+      wcagCriteria: [String],
+      priorityScore: Number
+    }],
     passes: Array,
     incomplete: Array,
     inapplicable: Array
+  },
+  lighthouseScores: {
+    performance: Number,
+    accessibility: Number,
+    seo: Number,
+    bestPractices: Number
+  },
+  lighthouseMetrics: {
+    timing: {
+      firstContentfulPaint: Number,
+      largestContentfulPaint: Number,
+      timeToInteractive: Number,
+      speedIndex: Number,
+      totalBlockingTime: Number,
+      cumulativeLayoutShift: Number
+    },
+    resources: {
+      total: Number,
+      byType: Map,
+      transferSize: Number
+    }
   },
   testEngine: {
     name: String,
@@ -53,5 +95,4 @@ const TestResultSchema: Schema = new Schema({
   }
 });
 
-// Create and export the model
 export default mongoose.model<ITestResult>('TestResult', TestResultSchema);

@@ -4,9 +4,6 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import testRoutes from './routes/test.routes';
 
-// Import routes (we'll create these next)
-// import testRoutes from './routes/test.routes';
-
 // Load environment variables
 dotenv.config();
 
@@ -17,6 +14,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Log response bodies
+app.use((req, res, next) => {
+  const originalJson = res.json;
+  res.json = function (body) {
+    console.log('\nResponse Body:', JSON.stringify(body, null, 2));
+    return originalJson.call(this, body);
+  };
+  next();
+});
 
 // Basic route for testing
 app.get('/', (req, res) => {

@@ -1,43 +1,35 @@
 import { Request, Response } from 'express';
-import { AxeService } from '../services/axe.service';
+import { AxeService, EnhancedAxeService } from '../services/axe';
 import TestResult from '../models/test-result.model';
+import { LighthouseService } from '../services/lighthouse.service';
 
-const axeService = new AxeService();
-
-// Run an accessibility test on a URL
 export const runTest = async (req: Request, res: Response) => {
   try {
-    // Get URL and options from request body
     const { url, options } = req.body;
-    
-    // Validate URL
+    const useEnhanced = req.query.enhanced === 'true';
+
     if (!url || typeof url !== 'string' || !url.match(/^https?:\/\/.+/)) {
       return res.status(400).json({ error: 'Valid URL required' });
     }
-    
-    // Run the accessibility test
-    const testResults = await axeService.testUrl(url, options || {});
-    
-    // Calculate score (simple approach - can be refined later)
+
+    const service = useEnhanced ? new EnhancedAxeService() : new AxeService();
+    const testResults = await service.testUrl(url, options || {});
+
     const passCount = testResults.passes.length;
     const violationCount = testResults.violations.length;
     const score = Math.round((passCount / (passCount + violationCount || 1)) * 100);
-    
-    // Create summary
-    const summary = {
-      violations: violationCount,
-      passes: passCount,
-      incomplete: testResults.incomplete.length,
-      inapplicable: testResults.inapplicable.length,
-      score
-    };
-    
-    // Save to database
+
     const testResult = await TestResult.create({
       url: testResults.url,
-      timestamp: testResults.timestamp,
-      summary,
-      results: {
+      testType: 'axe',
+      axeSummary: {
+        violations: violationCount,
+        passes: passCount,
+        incomplete: testResults.incomplete.length,
+        inapplicable: testResults.inapplicable.length,
+        score
+      },
+      axeResults: {
         violations: testResults.violations,
         passes: testResults.passes,
         incomplete: testResults.incomplete,
@@ -45,30 +37,28 @@ export const runTest = async (req: Request, res: Response) => {
       },
       testEngine: testResults.testEngine
     });
-    
-    // Return response
+
     res.status(201).json({
       id: testResult._id,
       url: testResult.url,
       timestamp: testResult.timestamp,
-      summary,
-      results: {
-        violations: testResults.violations,
-        passes: testResults.passes,
-        incomplete: testResults.incomplete
-      }
+      testType: 'axe',
+      summary: testResult.axeSummary,
+      results: testResult.axeResults
     });
+
   } catch (error) {
     console.error('Error running accessibility test:', error);
-    res.status(500).json({ error: 'Failed to run accessibility test' });
+    res.status(500).json({ 
+      error: 'Failed to run accessibility test',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
   }
 };
 
-// Get a specific test result by ID
 export const getTestResult = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    
     const testResult = await TestResult.findById(id);
     
     if (!testResult) {
@@ -82,22 +72,84 @@ export const getTestResult = async (req: Request, res: Response) => {
   }
 };
 
-// Get history of tests for a specific URL
 export const getTestHistory = async (req: Request, res: Response) => {
   try {
     const { url } = req.params;
-    
-    // URL decode the parameter
-    const decodedUrl = decodeURIComponent(url);
-    
-    const testResults = await TestResult
-      .find({ url: decodedUrl })
+    const decodedUrl = url ? decodeURIComponent(url) : null;
+
+    const query = decodedUrl ? { url: decodedUrl } : {};
+    const testResults = await TestResult.find(query)
       .sort({ timestamp: -1 })
-      .limit(10);
-    
-    res.json(testResults);
+      .limit(10)
+      .lean();
+
+    const history = testResults.map(tr => ({
+      id: tr._id.toString(),
+      url: tr.url,
+      timestamp: tr.timestamp.toISOString(),
+      testType: tr.testType,
+      axeSummary: tr.axeSummary ? {
+        score: tr.axeSummary.score / 100,
+        violations: tr.axeSummary.violations
+      } : undefined,
+      lighthouseScores: tr.lighthouseScores ? {
+        performance: tr.lighthouseScores.performance,
+        accessibility: tr.lighthouseScores.accessibility,
+        seo: tr.lighthouseScores.seo,
+        bestPractices: tr.lighthouseScores.bestPractices
+      } : undefined
+    }));
+
+    res.json(history);
   } catch (error) {
     console.error('Error retrieving test history:', error);
-    res.status(500).json({ error: 'Failed to retrieve test history' });
+    res.status(500).json({ 
+      error: 'Failed to retrieve test history',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+};
+
+const lighthouseService = new LighthouseService();
+
+export const runLighthouseTest = async (req: Request, res: Response) => {
+  try {
+    const { url } = req.body;
+    
+    if (!url || typeof url !== 'string' || !url.match(/^https?:\/\/.+/)) {
+      return res.status(400).json({ error: 'Valid URL required' });
+    }
+
+    const results = await lighthouseService.runLighthouse(url);
+
+    const testResult = await TestResult.create({
+      url: results.url,
+      testType: 'lighthouse',
+      lighthouseScores: results.scores,
+      lighthouseMetrics: {
+        timing: results.timing,
+        resources: results.resources
+      },
+      testEngine: {
+        name: 'lighthouse',
+        version: results.lighthouseVersion
+      }
+    });
+
+    res.status(201).json({
+      id: testResult._id,
+      url: testResult.url,
+      timestamp: testResult.timestamp,
+      testType: 'lighthouse',
+      scores: testResult.lighthouseScores,
+      metrics: testResult.lighthouseMetrics
+    });
+
+  } catch (error) {
+    console.error('Lighthouse error:', error);
+    res.status(500).json({ 
+      error: 'Lighthouse analysis failed',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
   }
 };
