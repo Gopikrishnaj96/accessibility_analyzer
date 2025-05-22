@@ -1,0 +1,566 @@
+[
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:48.428Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:48.428Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:48.428Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:48.423Z"
+  },
+  {
+    "level": "INFO",
+    "message": "API call failed with server error, retrying in 2000ms (attempt 2/2)",
+    "timestamp": "2025-05-21T20:40:46.422Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:46.422Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:46.422Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:46.422Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:46.413Z"
+  },
+  {
+    "level": "INFO",
+    "message": "API call failed with server error, retrying in 1000ms (attempt 1/2)",
+    "timestamp": "2025-05-21T20:40:45.404Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:45.404Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:45.404Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:45.404Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:45.395Z"
+  },
+  {
+    "level": "INFO",
+    "message": "Fetching test history",
+    "data": {
+      "url": ""
+    },
+    "timestamp": "2025-05-21T20:40:45.395Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:31.205Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:31.205Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:31.204Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:31.199Z"
+  },
+  {
+    "level": "INFO",
+    "message": "API call failed with server error, retrying in 2000ms (attempt 2/2)",
+    "timestamp": "2025-05-21T20:40:29.192Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:29.192Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:29.192Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:29.192Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:29.183Z"
+  },
+  {
+    "level": "INFO",
+    "message": "API call failed with server error, retrying in 1000ms (attempt 1/2)",
+    "timestamp": "2025-05-21T20:40:28.173Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:28.173Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:28.173Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:28.172Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:28.166Z"
+  },
+  {
+    "level": "INFO",
+    "message": "Fetching test history",
+    "data": {
+      "url": ""
+    },
+    "timestamp": "2025-05-21T20:40:28.165Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:27.165Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:27.164Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:27.164Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:27.157Z"
+  },
+  {
+    "level": "INFO",
+    "message": "API call failed with server error, retrying in 2000ms (attempt 2/2)",
+    "timestamp": "2025-05-21T20:40:25.156Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:25.156Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:25.156Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:25.156Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:25.149Z"
+  },
+  {
+    "level": "INFO",
+    "message": "API call failed with server error, retrying in 1000ms (attempt 1/2)",
+    "timestamp": "2025-05-21T20:40:24.147Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API call to http://localhost:3001/api/test/history/ failed: Server error: The analysis service is currently experiencing issues. Please try again later.",
+    "data": {
+      "error": {
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "url": "http://localhost:3001/api/test/history/",
+        "data": {
+          "error": "Failed to retrieve test result"
+        },
+        "isServerError": true
+      },
+      "stack": "Error: API error: 500\n    at apiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:37:27)\n    at async retryApiCall (http://172.27.128.1:8080/src/lib/api.ts?t=1747859763476:85:20)",
+      "context": "API call to http://localhost:3001/api/test/history/ failed"
+    },
+    "timestamp": "2025-05-21T20:40:24.147Z"
+  },
+  {
+    "level": "ERROR",
+    "message": "API error: API error: 500",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/",
+      "status": 500,
+      "data": {
+        "error": "Failed to retrieve test result"
+      }
+    },
+    "timestamp": "2025-05-21T20:40:24.147Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/",
+    "data": {
+      "status": 500
+    },
+    "timestamp": "2025-05-21T20:40:24.146Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:24.139Z"
+  },
+  {
+    "level": "INFO",
+    "message": "Fetching test history",
+    "data": {
+      "url": ""
+    },
+    "timestamp": "2025-05-21T20:40:24.139Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response data received",
+    "data": {
+      "url": "http://localhost:3001/api/test/history/https%3A%2F%2Fwww.techtaliya.com%2F"
+    },
+    "timestamp": "2025-05-21T20:40:18.333Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/history/https%3A%2F%2Fwww.techtaliya.com%2F",
+    "data": {
+      "status": 200
+    },
+    "timestamp": "2025-05-21T20:40:18.333Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/history/https%3A%2F%2Fwww.techtaliya.com%2F",
+    "data": {
+      "method": "GET"
+    },
+    "timestamp": "2025-05-21T20:40:18.114Z"
+  },
+  {
+    "level": "INFO",
+    "message": "Fetching test history",
+    "data": {
+      "url": "https://www.techtaliya.com/"
+    },
+    "timestamp": "2025-05-21T20:40:18.114Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response data received",
+    "data": {
+      "url": "http://localhost:3001/api/test/lighthouse"
+    },
+    "timestamp": "2025-05-21T20:40:18.102Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test/lighthouse",
+    "data": {
+      "status": 201
+    },
+    "timestamp": "2025-05-21T20:40:18.102Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test/lighthouse",
+    "data": {
+      "method": "POST"
+    },
+    "timestamp": "2025-05-21T20:40:00.489Z"
+  },
+  {
+    "level": "INFO",
+    "message": "Running lighthouse test",
+    "data": {
+      "url": "https://www.techtaliya.com/"
+    },
+    "timestamp": "2025-05-21T20:40:00.489Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response data received",
+    "data": {
+      "url": "http://localhost:3001/api/test?enhanced=true"
+    },
+    "timestamp": "2025-05-21T20:40:00.488Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API response from http://localhost:3001/api/test?enhanced=true",
+    "data": {
+      "status": 201
+    },
+    "timestamp": "2025-05-21T20:40:00.488Z"
+  },
+  {
+    "level": "DEBUG",
+    "message": "API request to http://localhost:3001/api/test?enhanced=true",
+    "data": {
+      "method": "POST"
+    },
+    "timestamp": "2025-05-21T20:39:51.825Z"
+  },
+  {
+    "level": "INFO",
+    "message": "Running accessibility test",
+    "data": {
+      "url": "https://www.techtaliya.com/"
+    },
+    "timestamp": "2025-05-21T20:39:51.824Z"
+  }
+]

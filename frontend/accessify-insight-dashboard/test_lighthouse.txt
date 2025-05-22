@@ -1,0 +1,1926 @@
+{
+    "id": "682d4e122b2e2b4a74920ac2",
+    "url": "https://www.techtaliya.com/",
+    "timestamp": "2025-05-21T03:52:50.275Z",
+    "testType": "axe",
+    "summary": {
+        "violations": 2,
+        "passes": 2,
+        "incomplete": 1,
+        "inapplicable": 0,
+        "score": 50
+    },
+    "results": {
+        "violations": [
+            {
+                "id": "color-contrast",
+                "impact": "serious",
+                "tags": [
+                    "cat.color",
+                    "wcag2aa",
+                    "wcag143",
+                    "TTv5",
+                    "TT13.c",
+                    "EN-301-549",
+                    "EN-9.1.4.3",
+                    "ACT"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#1189e6",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 3.65,
+                                    "fontSize": "8.4pt (11.2px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": null,
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<div class=\"Header navbar-fixed-top\">",
+                                        "target": [
+                                            ".Header"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element has insufficient color contrast of 3.65 (foreground color: #1189e6, background color: #ffffff, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<span>Thoughts...</span>",
+                        "target": [
+                            ".navbar-brand > p > span"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #1189e6, background color: #ffffff, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+                    }
+                ],
+                "wcagCriteria": [],
+                "_id": "682d4e122b2e2b4a74920ac3"
+            },
+            {
+                "id": "heading-order",
+                "impact": "moderate",
+                "tags": [
+                    "cat.semantics",
+                    "best-practice"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order invalid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "moderate",
+                        "html": "<h4>technology</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(1) > .border-card > h4"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Heading order invalid"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order invalid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "moderate",
+                        "html": "<h5 class=\"card-title\">Artificial Intelligence (AI) in TechTaliya</h5>",
+                        "target": [
+                            ".col-lg-4.col-md-6.css-0:nth-child(1) > .card > .card-body > .card-title"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Heading order invalid"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order invalid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "moderate",
+                        "html": "<h4>Sudhir Menon</h4>",
+                        "target": [
+                            ".slick-active > div > .single-slider > .video-player > h4"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Heading order invalid"
+                    }
+                ],
+                "wcagCriteria": [],
+                "_id": "682d4e122b2e2b4a74920ac4"
+            }
+        ],
+        "passes": [
+            {
+                "id": "color-contrast",
+                "impact": "serious",
+                "tags": [
+                    "cat.color",
+                    "wcag2aa",
+                    "wcag143",
+                    "TTv5",
+                    "TT13.c",
+                    "EN-301-549",
+                    "EN-9.1.4.3",
+                    "ACT"
+                ],
+                "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+                "help": "Elements must meet minimum color contrast ratio thresholds",
+                "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axe-puppeteer",
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#000000",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span class=\"sc-dkjaqt dTkXDu\">",
+                        "target": [
+                            ".sc-kkmypM.ihNxZl:nth-child(1) > .sc-dkjaqt.dTkXDu"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#000000",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span class=\"sc-dkjaqt dTkXDu\">",
+                        "target": [
+                            ".sc-kkmypM.ihNxZl:nth-child(2) > .sc-dkjaqt.dTkXDu"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#000000",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span class=\"sc-dkjaqt dTkXDu\">",
+                        "target": [
+                            ".sc-kkmypM.ihNxZl:nth-child(3) > .sc-dkjaqt.dTkXDu"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#000000",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span class=\"sc-dkjaqt dTkXDu\">",
+                        "target": [
+                            ".sc-kkmypM.ihNxZl:nth-child(4) > .sc-dkjaqt.dTkXDu"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#000000",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span class=\"sc-dkjaqt dTkXDu\">",
+                        "target": [
+                            ".sc-kkmypM.ihNxZl:nth-child(5) > .sc-dkjaqt.dTkXDu"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#000000",
+                                    "bgColor": "#ffffff",
+                                    "contrastRatio": 21,
+                                    "fontSize": "36.0pt (48px)",
+                                    "fontWeight": "bold",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h1>TRANSFORMING YOUR BUSINESS THOUGHTS WITH AI, WEB AND MOBILE SOLUTIONS</h1>",
+                        "target": [
+                            "h1"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#0d6eb5",
+                                    "contrastRatio": 5.36,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 5.36"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"btn btn-primary mt-3\" href=\"/contact/\">",
+                        "target": [
+                            ".mt-3"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#0d6eb5",
+                                    "contrastRatio": 5.36,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 5.36"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"btn btn-primary\" href=\"/contact/\">",
+                        "target": [
+                            ".justify-content-between.align-items-center.row > .col-md-7 > .btn-primary.btn[href$=\"contact/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "9.6pt (12.8px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<p>&nbsp;Transforming <span>Thoughts...</span></p>",
+                        "target": [
+                            ".col-12 > p"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#1189e6",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 5.74,
+                                    "fontSize": "9.6pt (12.8px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 5.74"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span>Thoughts...</span>",
+                        "target": [
+                            ".col-12 > p > span"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<p>TechTaliya Informatics Pvt. Ltd. Ground Floor, Thapasya Building, Infopark, Kakkanad, Kochi, Kerala, India - 682042</p>",
+                        "target": [
+                            ".address-section > p"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#1189e6",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 5.74,
+                                    "fontSize": "15.0pt (20px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 5.74"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Company</h4>",
+                        "target": [
+                            ".col-6.col-md-6:nth-child(1) > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/company/about/\">About US</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"about/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/company/work-place/\">Workplace</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"work-place/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/company/careers/\">Careers</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"careers/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/contact/\">Contact Us</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"contact/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#1189e6",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 5.74,
+                                    "fontSize": "15.0pt (20px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 5.74"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Services</h4>",
+                        "target": [
+                            ".col-6.col-md-6:nth-child(2) > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/services/ai-softwares/\">AI Software Development</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"ai-softwares/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/services/mobile-app/\">Mobile App Development</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"mobile-app/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/services/web-apps/\">Web Development</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"web-apps/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/services/data-analytics/\">Data Analytics</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"data-analytics/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/services/custom-softwares/\">Custom Software Development</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"custom-softwares/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a class=\"dropdown-item\" href=\"/services/ecommerce-solutions/\">E-Commerce Solutions</a>",
+                        "target": [
+                            ".dropdown-item[href$=\"ecommerce-solutions/\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#1189e6",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 5.74,
+                                    "fontSize": "15.0pt (20px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 5.74"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Contact Us</h4>",
+                        "target": [
+                            ".contact-us > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a href=\"mailto:info@techtaliya.com\"><span><img alt=\"\" src=\"/img/icons/footer-mail.png\"></span>info@techtaliya.com</a>",
+                        "target": [
+                            "a[href=\"mailto:info@techtaliya.com\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<a href=\"tel:+914844036777\"><span><img alt=\"\" src=\"/img/icons/footer-phone.png\"></span>+91 484 4036777</a>",
+                        "target": [
+                            "a[href=\"tel:+914844036777\"]"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "10.5pt (14px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<p>© 2025 <span>TechTaliya</span>. All rights reserved.</p>",
+                        "target": [
+                            ".copyright > p"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "fgColor": "#ffffff",
+                                    "bgColor": "#000000",
+                                    "contrastRatio": 21,
+                                    "fontSize": "10.5pt (14px)",
+                                    "fontWeight": "normal",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element has sufficient color contrast of 21"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<span>TechTaliya</span>",
+                        "target": [
+                            ".copyright > p > span"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "heading-order",
+                "impact": "moderate",
+                "tags": [
+                    "cat.semantics",
+                    "best-practice"
+                ],
+                "description": "Ensure the order of headings is semantically correct",
+                "help": "Heading levels should only increase by one",
+                "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/heading-order?application=axe-puppeteer",
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": {
+                                    "headingOrder": [
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(1) > div > div > div > div > div:nth-child(1) > h1:nth-child(1)"
+                                            ],
+                                            "level": 1
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(2) > div:nth-child(1) > div > div > div:nth-child(2) > div:nth-child(1) > h2"
+                                            ],
+                                            "level": 2
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(3) > div > h2:nth-child(1)"
+                                            ],
+                                            "level": 2
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(1) > h2"
+                                            ],
+                                            "level": 2
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(1) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(2) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(3) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(4) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(5) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(6) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(7) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(8) > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(5) > div > div > div:nth-child(1) > div:nth-child(1) > h2:nth-child(1)"
+                                            ],
+                                            "level": 2
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > section:nth-child(6) > div > div > div:nth-child(1) > div > div:nth-child(2) > h5:nth-child(1)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > section:nth-child(6) > div > div > div:nth-child(2) > div > div:nth-child(2) > h5:nth-child(1)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > section:nth-child(6) > div > div > div:nth-child(3) > div > div:nth-child(2) > h5:nth-child(1)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > section:nth-child(6) > div > div > div:nth-child(4) > div > div:nth-child(2) > h5:nth-child(1)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > section:nth-child(6) > div > div > div:nth-child(5) > div > div:nth-child(2) > h5:nth-child(1)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > section:nth-child(6) > div > div > div:nth-child(6) > div > div:nth-child(2) > h5:nth-child(1)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(7) > section > div > div:nth-child(1) > div > div:nth-child(1) > h2"
+                                            ],
+                                            "level": 2
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(8) > section > div > div > div:nth-child(1) > h2:nth-child(1)"
+                                            ],
+                                            "level": 2
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(8) > section > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div > div > div > h4:nth-child(2)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > main:nth-child(12) > div:nth-child(8) > section > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div > div > div > h5:nth-child(3)"
+                                            ],
+                                            "level": 5
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > div:nth-child(13) > footer > div > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1) > h4:nth-child(1)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > div:nth-child(13) > footer > div > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(2) > h4:nth-child(1)"
+                                            ],
+                                            "level": 4
+                                        },
+                                        {
+                                            "ancestry": [
+                                                "html > body > div:nth-child(13) > footer > div > div:nth-child(1) > div:nth-child(3) > h4:nth-child(1)"
+                                            ],
+                                            "level": 4
+                                        }
+                                    ]
+                                },
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h1>TRANSFORMING YOUR BUSINESS THOUGHTS WITH AI, WEB AND MOBILE SOLUTIONS</h1>",
+                        "target": [
+                            "h1"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h2 class=\"\"><span>our</span> products</h2>",
+                        "target": [
+                            ".css-1c2fuzs:nth-child(1) > h2"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h2>OUR PROJECTS</h2>",
+                        "target": [
+                            ".container > h2"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h2 class=\"\"><span>WHY</span> TECHTALIYA</h2>",
+                        "target": [
+                            ".container > .css-0 > h2"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Long-Term</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(2) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Expertise</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(3) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Affordable</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(4) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Fast</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(5) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Skilled Team</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(6) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Client Loyalty</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(7) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Global Partnership</h4>",
+                        "target": [
+                            ".col-lg-3.col-md-4.css-0:nth-child(8) > .border-card > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h2>Empowering success with software solutions</h2>",
+                        "target": [
+                            "div[data-aos=\"fade-left\"] > h2"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h5 class=\"card-title\">Mobile App Development in TechTaliya</h5>",
+                        "target": [
+                            ".col-lg-4.col-md-6.css-0:nth-child(2) > .card > .card-body > .card-title"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h5 class=\"card-title\">Web App Development in TechTaliya</h5>",
+                        "target": [
+                            ".col-lg-4.col-md-6.css-0:nth-child(3) > .card > .card-body > .card-title"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h5 class=\"card-title\">Data and Analytics in TechTaliya</h5>",
+                        "target": [
+                            ".col-lg-4.col-md-6.css-0:nth-child(4) > .card > .card-body > .card-title"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h5 class=\"card-title\">Custom Software Development in TechTaliya</h5>",
+                        "target": [
+                            ".col-lg-4.col-md-6.css-0:nth-child(5) > .card > .card-body > .card-title"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h5 class=\"card-title\">E-Commerce Solutions in TechTaliya</h5>",
+                        "target": [
+                            ".col-lg-4.col-md-6.css-0:nth-child(6) > .card > .card-body > .card-title"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h2 class=\"\"> Trusted PARTNERS</h2>",
+                        "target": [
+                            ".col-md-10 > .css-0:nth-child(1) > h2"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h2>What our clients say</h2>",
+                        "target": [
+                            ".col-md-4 > h2"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h5>Ex CIO of Hilton</h5>",
+                        "target": [
+                            ".slick-active > div > .single-slider > .video-player > h5"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Company</h4>",
+                        "target": [
+                            ".col-6.col-md-6:nth-child(1) > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Services</h4>",
+                        "target": [
+                            ".col-6.col-md-6:nth-child(2) > h4"
+                        ]
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "data": null,
+                                "relatedNodes": [],
+                                "impact": "moderate",
+                                "message": "Heading order valid"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": null,
+                        "html": "<h4>Contact Us</h4>",
+                        "target": [
+                            ".contact-us > h4"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "incomplete": [
+            {
+                "id": "color-contrast",
+                "impact": "serious",
+                "tags": [
+                    "cat.color",
+                    "wcag2aa",
+                    "wcag143",
+                    "TTv5",
+                    "TT13.c",
+                    "EN-301-549",
+                    "EN-9.1.4.3",
+                    "ACT"
+                ],
+                "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+                "help": "Elements must meet minimum color contrast ratio thresholds",
+                "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axe-puppeteer",
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "8.4pt (11.2px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgOverlap",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it is overlapped by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<p>&nbsp; Transforming <span>Thoughts...</span></p>",
+                        "target": [
+                            ".navbar-brand > p"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "elmPartiallyObscuring",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it partially overlaps other elements"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<span class=\"sc-dkjaqt dTkXDu\">",
+                        "target": [
+                            ".sc-kkmypM.ihNxZl:nth-child(6) > .sc-dkjaqt.dTkXDu"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "11.3pt (15px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "elmPartiallyObscured",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<div class=\"sc-knesRu kJjAvN\">",
+                                        "target": [
+                                            ".sc-knesRu"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it's partially obscured by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<a class=\"sc-czgmHJ fDmKa\" href=\"/contact/\">Contact Us</a>",
+                        "target": [
+                            ".sc-czgmHJ"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "31.5pt (42px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<div class=\"top-section\">",
+                                        "target": [
+                                            ".top-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<h2 class=\"\"><span>our</span> products</h2>",
+                        "target": [
+                            ".css-1c2fuzs:nth-child(1) > h2"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "31.5pt (42px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<div class=\"top-section\">",
+                                        "target": [
+                                            ".top-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<span>our</span>",
+                        "target": [
+                            ".css-1c2fuzs:nth-child(1) > h2 > span"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "13.5pt (18px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<div class=\"top-section\">",
+                                        "target": [
+                                            ".top-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<p class=\"\">",
+                        "target": [
+                            ".css-1c2fuzs:nth-child(2) > p"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "30.0pt (40px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "elmPartiallyObscured",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<body>",
+                                        "target": [
+                                            "body"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it's partially obscured by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<h2>OUR PROJECTS</h2>",
+                        "target": [
+                            ".container > h2"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "12.8pt (17px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "elmPartiallyObscured",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<body>",
+                                        "target": [
+                                            "body"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it's partially obscured by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<p>We thrive on turning unique ideas into tailored products using the perfect blend of technology and tools, ensuring users get exactly&nbsp;what&nbsp;they&nbsp;want. That makes us a long-term IT support force of our&nbsp;clients.</p>",
+                        "target": [
+                            ".container > p"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "30.0pt (40px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "elmPartiallyObscured",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<body>",
+                                        "target": [
+                                            "body"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it's partially obscured by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<h2>Empowering success with software solutions</h2>",
+                        "target": [
+                            "div[data-aos=\"fade-left\"] > h2"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "13.5pt (18px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "elmPartiallyObscured",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<body>",
+                                        "target": [
+                                            "body"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it's partially obscured by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<p>",
+                        "target": [
+                            "div[data-aos=\"fade-left\"] > p"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "30.0pt (40px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<section data-aos=\"fade\" data-padding=\"\" class=\"testimonials-section\">",
+                                        "target": [
+                                            ".testimonials-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<h2>What our clients say</h2>",
+                        "target": [
+                            ".col-md-4 > h2"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "0.0pt (0px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgOverlap",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined because it is overlapped by another element"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<button type=\"button\" data-role=\"none\" class=\"slick-arrow slick-prev\" style=\"display: block;\"> Previous</button>",
+                        "target": [
+                            ".slick-prev"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "18.8pt (25px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "3:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<section data-aos=\"fade\" data-padding=\"\" class=\"testimonials-section\">",
+                                        "target": [
+                                            ".testimonials-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<h4>Sudhir Menon</h4>",
+                        "target": [
+                            ".slick-active > div > .single-slider > .video-player > h4"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "13.5pt (18px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<section data-aos=\"fade\" data-padding=\"\" class=\"testimonials-section\">",
+                                        "target": [
+                                            ".testimonials-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<h5>Ex CIO of Hilton</h5>",
+                        "target": [
+                            ".slick-active > div > .single-slider > .video-player > h5"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "color-contrast",
+                                "data": {
+                                    "contrastRatio": 0,
+                                    "fontSize": "0.0pt (0px)",
+                                    "fontWeight": "normal",
+                                    "messageKey": "bgImage",
+                                    "expectedContrastRatio": "4.5:1"
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<section data-aos=\"fade\" data-padding=\"\" class=\"testimonials-section\">",
+                                        "target": [
+                                            ".testimonials-section"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious",
+                                "message": "Element's background color could not be determined due to a background image"
+                            }
+                        ],
+                        "all": [],
+                        "none": [],
+                        "impact": "serious",
+                        "html": "<button type=\"button\" data-role=\"none\" class=\"slick-arrow slick-next\" style=\"display: block;\"> Next</button>",
+                        "target": [
+                            ".slick-next"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+                    }
+                ]
+            }
+        ],
+        "inapplicable": []
+    }
+}

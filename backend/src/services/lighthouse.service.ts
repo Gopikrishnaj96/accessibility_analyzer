@@ -32,6 +32,32 @@ const extractTimingMetrics = (audits: any) => ({
   cumulativeLayoutShift: audits['cumulative-layout-shift']?.numericValue || 0
 });
 
+const extractOpportunities = (audits: any) => {
+  return Object.values(audits)
+    .filter((audit: any) => audit.details?.type === 'opportunity')
+    .map((audit: any) => ({
+      id: audit.id,
+      title: audit.title,
+      description: audit.description,
+      score: audit.score,
+      numericValue: audit.numericValue,
+      numericUnit: audit.numericUnit,
+      details: audit.details
+    }));
+};
+
+const extractDiagnostics = (audits: any) => {
+  return Object.values(audits)
+    .filter((audit: any) => audit.details?.type === 'diagnostic')
+    .map((audit: any) => ({
+      id: audit.id,
+      title: audit.title,
+      description: audit.description,
+      score: audit.score,
+      details: audit.details
+    }));
+};
+
 export class LighthouseService {
   async runLighthouse(url: string) {
     let chrome;
@@ -72,6 +98,8 @@ export class LighthouseService {
         },
         timing,
         resources,
+        opportunities: extractOpportunities(runnerResult.lhr.audits),
+        diagnostics: extractDiagnostics(runnerResult.lhr.audits),
         lighthouseVersion: runnerResult.lhr.lighthouseVersion || 'unknown'
       };
     } catch (error) {
@@ -89,6 +117,8 @@ export class LighthouseService {
           cumulativeLayoutShift: 0
         },
         resources: { total: 0, byType: new Map(), transferSize: 0 },
+        opportunities: [],
+        diagnostics: [],
         lighthouseVersion: 'unknown'
       };
     } finally {

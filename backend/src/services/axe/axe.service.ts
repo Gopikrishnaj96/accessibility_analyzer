@@ -25,7 +25,7 @@ export class AxeService {
       headless: true,
       args: ['--no-sandbox']
     });
-    
+
     try {
       console.log(`Testing URL: ${url}`);
       const page = await browser.newPage();
@@ -37,11 +37,16 @@ export class AxeService {
         timeout: options.timeout || 30000
       });
       
-      // Run axe-core analysis
-      const results = await new AxePuppeteer(page)
-        .withRules(options.rules || [])
-        .analyze();
-            
+      // Initialize AxePuppeteer
+      let axeBuilder = new AxePuppeteer(page);
+      
+      // Only apply withRules if rules are specified and non-empty
+      if (options.rules && options.rules.length > 0) {
+        axeBuilder = axeBuilder.withRules(options.rules);
+      }
+      
+      // Run analysis
+      const results = await axeBuilder.analyze();
       
       return {
         url,

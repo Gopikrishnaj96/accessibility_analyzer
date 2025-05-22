@@ -10,12 +10,27 @@ interface AccessibilityDetailsProps {
 }
 
 export default function AccessibilityDetails({ results }: AccessibilityDetailsProps) {
-  if (!results || !results.results) {
-    return <div>No accessibility data available</div>;
+  // Check for all possible missing data scenarios
+  if (!results || typeof results !== 'object') {
+    return <div className="text-center p-6">No accessibility data available</div>;
   }
 
-  const { violations, passes, incomplete, inapplicable } = results.results;
-  const { summary } = results;
+  // Handle both newer API format (axeSummary) and older format (summary + results)
+  const summaryData = results.axeSummary || results.summary || { 
+    violations: 0, 
+    passes: 0, 
+    incomplete: 0, 
+    inapplicable: 0 
+  };
+  
+  const resultsData = results.results || {
+    violations: [],
+    passes: [],
+    incomplete: [],
+    inapplicable: []
+  };
+
+  const { violations, passes, incomplete, inapplicable } = resultsData;
 
   return (
     <div className="space-y-6">
@@ -24,7 +39,7 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
           <CardHeader className="pb-2">
             <CardTitle className="text-lg flex items-center gap-2">
               Violations
-              <Badge variant="destructive">{summary.violations}</Badge>
+              <Badge variant="destructive">{summaryData.violations || 0}</Badge>
             </CardTitle>
             <CardDescription>Failed accessibility checks</CardDescription>
           </CardHeader>
@@ -33,7 +48,7 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
           <CardHeader className="pb-2">
             <CardTitle className="text-lg flex items-center gap-2">
               Passes
-              <Badge variant="success">{summary.passes}</Badge>
+              <Badge variant="success">{summaryData.passes || 0}</Badge>
             </CardTitle>
             <CardDescription>Passed accessibility checks</CardDescription>
           </CardHeader>
@@ -42,7 +57,7 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
           <CardHeader className="pb-2">
             <CardTitle className="text-lg flex items-center gap-2">
               Incomplete
-              <Badge variant="secondary">{summary.incomplete}</Badge>
+              <Badge variant="secondary">{summaryData.incomplete || 0}</Badge>
             </CardTitle>
             <CardDescription>Need manual verification</CardDescription>
           </CardHeader>
@@ -51,7 +66,7 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
           <CardHeader className="pb-2">
             <CardTitle className="text-lg flex items-center gap-2">
               Inapplicable
-              <Badge variant="outline">{summary.inapplicable}</Badge>
+              <Badge variant="outline">{summaryData.inapplicable || 0}</Badge>
             </CardTitle>
             <CardDescription>Rules that don't apply</CardDescription>
           </CardHeader>
@@ -67,20 +82,20 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
         </TabsList>
         
         <TabsContent value="violations" className="space-y-4">
-          {violations && violations.length > 0 ? (
+          {violations && Array.isArray(violations) && violations.length > 0 ? (
             violations.map(issue => (
               <IssueCard 
                 key={issue.id}
                 id={issue.id}
                 rule={issue.id}
-                description={issue.description}
+                description={issue.description || 'No description available'}
                 impact={issue.impact || 'minor'}
-                elements={issue.nodes.map(node => node.html)}
-                wcagCriteria={getWcagFromTags(issue.tags)}
-                helpUrl={issue.helpUrl}
+                elements={issue.nodes?.map(node => node.html) || []}
+                wcagCriteria={issue.tags ? getWcagFromTags(issue.tags) : 'No WCAG mapping'}
+                helpUrl={issue.helpUrl || '#'}
                 engine="axe"
-                help={issue.help}
-                nodes={issue.nodes}
+                help={issue.help || 'No help text available'}
+                nodes={issue.nodes || []}
               />
             ))
           ) : (
@@ -93,20 +108,20 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
         </TabsContent>
         
         <TabsContent value="passes" className="space-y-4">
-          {passes && passes.length > 0 ? (
+          {passes && Array.isArray(passes) && passes.length > 0 ? (
             passes.map(issue => (
               <IssueCard 
                 key={issue.id}
                 id={issue.id}
                 rule={issue.id}
-                description={issue.description}
+                description={issue.description || 'No description available'}
                 impact="none"
-                elements={issue.nodes.map(node => node.html)}
-                wcagCriteria={getWcagFromTags(issue.tags)}
-                helpUrl={issue.helpUrl}
+                elements={issue.nodes?.map(node => node.html) || []}
+                wcagCriteria={issue.tags ? getWcagFromTags(issue.tags) : 'No WCAG mapping'}
+                helpUrl={issue.helpUrl || '#'}
                 engine="axe"
-                help={issue.help}
-                nodes={issue.nodes}
+                help={issue.help || 'No help text available'}
+                nodes={issue.nodes || []}
                 isPassing={true}
               />
             ))
@@ -120,20 +135,20 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
         </TabsContent>
         
         <TabsContent value="incomplete" className="space-y-4">
-          {incomplete && incomplete.length > 0 ? (
+          {incomplete && Array.isArray(incomplete) && incomplete.length > 0 ? (
             incomplete.map(issue => (
               <IssueCard 
                 key={issue.id}
                 id={issue.id}
                 rule={issue.id}
-                description={issue.description}
+                description={issue.description || 'No description available'}
                 impact={issue.impact || 'moderate'}
-                elements={issue.nodes.map(node => node.html)}
-                wcagCriteria={getWcagFromTags(issue.tags)}
-                helpUrl={issue.helpUrl}
+                elements={issue.nodes?.map(node => node.html) || []}
+                wcagCriteria={issue.tags ? getWcagFromTags(issue.tags) : 'No WCAG mapping'}
+                helpUrl={issue.helpUrl || '#'}
                 engine="axe"
-                help={issue.help}
-                nodes={issue.nodes}
+                help={issue.help || 'No help text available'}
+                nodes={issue.nodes || []}
                 needsReview={true}
               />
             ))
@@ -147,19 +162,19 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
         </TabsContent>
         
         <TabsContent value="inapplicable" className="space-y-4">
-          {inapplicable && inapplicable.length > 0 ? (
+          {inapplicable && Array.isArray(inapplicable) && inapplicable.length > 0 ? (
             inapplicable.map(issue => (
               <IssueCard 
                 key={issue.id}
                 id={issue.id}
                 rule={issue.id}
-                description={issue.description}
+                description={issue.description || 'No description available'}
                 impact="none"
                 elements={[]}
-                wcagCriteria={getWcagFromTags(issue.tags)}
-                helpUrl={issue.helpUrl}
+                wcagCriteria={issue.tags ? getWcagFromTags(issue.tags) : 'No WCAG mapping'}
+                helpUrl={issue.helpUrl || '#'}
                 engine="axe"
-                help={issue.help}
+                help={issue.help || 'No help text available'}
                 nodes={[]}
                 inapplicable={true}
               />
@@ -179,8 +194,12 @@ export default function AccessibilityDetails({ results }: AccessibilityDetailsPr
 
 // Helper function to extract WCAG criteria from tags
 function getWcagFromTags(tags: string[]): string {
-  const wcagTag = tags.find(tag => tag.startsWith('wcag'));
-  return wcagTag 
+  if (!tags || !Array.isArray(tags) || tags.length === 0) {
+    return 'No WCAG mapping';
+  }
+  
+  const wcagTag = tags.find(tag => tag && typeof tag === 'string' && tag.startsWith('wcag'));
+  return wcagTag && wcagTag.length >= 7
     ? `WCAG ${wcagTag.substring(4, 5)}.${wcagTag.substring(5, 6)}.${wcagTag.substring(6, 7)} ${wcagTag.substring(7).toUpperCase()}`
     : 'No WCAG mapping';
 } 

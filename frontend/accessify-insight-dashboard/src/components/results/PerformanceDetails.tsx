@@ -21,130 +21,145 @@ interface PerformanceDetailsProps {
 // This component is now robust to missing/null fields in Lighthouse results.
 // It will render whatever data is available, and show placeholders for missing data.
 export default function PerformanceDetails({ results }: PerformanceDetailsProps) {
-  if (!results) {
+  if (!results || typeof results !== 'object') {
     return (
       <div className="text-center p-8 text-muted-foreground">
         No performance data available
       </div>
     );
   }
-
+  
+  // Handle both API formats (direct scores or nested under lighthouseScores)
+  const scores = results.lighthouseScores || results.scores || {};
+  
   // Defensive: Use optional chaining and fallback values for all fields
-  const scores = results.scores || {};
   const audits = results.audits || {};
-  const timing = results.timing || {};
-  const resources = results.resources || {};
+  const timing = results.timing || results.metrics?.timing || {};
+  const resources = results.resources || results.metrics?.resources || {};
   const errors = results.errors || [];
   const screenshots = results.screenshots || {};
 
-  // Group audits by category, but only if audits exist
-  const groupedAudits = Object.values(audits).reduce((groups: Record<string, LighthouseAudit[]>, audit) => {
-    const category = getAuditCategory(audit.id);
-    if (!groups[category]) {
-      groups[category] = [];
-    }
-    groups[category].push(audit);
-    return groups;
-  }, {});
+  // Group audits by category, but only if audits exist and is an object
+  const groupedAudits = typeof audits === 'object' && audits ? 
+    Object.values(audits).reduce((groups: Record<string, LighthouseAudit[]>, audit) => {
+      if (!audit || typeof audit !== 'object') return groups;
+      const category = getAuditCategory(audit.id || '');
+      if (!groups[category]) {
+        groups[category] = [];
+      }
+      groups[category].push(audit);
+      return groups;
+    }, {}) 
+    : {};
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <MetricCard 
-          title="Performance" 
-          score={typeof scores.performance === 'number' ? scores.performance : null} 
-          icon={<Zap className="h-5 w-5" />}
-          description="Page speed & loading"
-        />
-        <MetricCard 
-          title="Accessibility" 
-          score={typeof scores.accessibility === 'number' ? scores.accessibility : null} 
-          icon={<LayoutGrid className="h-5 w-5" />}
-          description="Usability for all users"
-        />
-        <MetricCard 
-          title="SEO" 
-          score={typeof scores.seo === 'number' ? scores.seo : null} 
-          icon={<Search className="h-5 w-5" />}
-          description="Search engine optimization"
-        />
-        <MetricCard 
-          title="Best Practices" 
-          score={typeof scores.bestPractices === 'number' ? scores.bestPractices : null} 
-          icon={<Code2 className="h-5 w-5" />}
-          description="Web development standards"
-        />
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-lg font-medium">Key Performance Metrics</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <TimingCard
-            metric="First Contentful Paint"
-            value={timing.firstContentfulPaint ?? null}
-            unit="ms"
-            description="Time until first content is painted"
-          />
-          <TimingCard
-            metric="Largest Contentful Paint"
-            value={timing.largestContentfulPaint ?? null}
-            unit="ms"
-            description="Time until largest content is painted"
-            important
-          />
-          <TimingCard
-            metric="Time to Interactive"
-            value={timing.timeToInteractive ?? null}
-            unit="ms"
-            description="Time until page is fully interactive"
-          />
-          <TimingCard
-            metric="Speed Index"
-            value={timing.speedIndex ?? null}
-            unit="ms"
-            description="How quickly content is visually displayed"
-          />
-          <TimingCard
-            metric="Total Blocking Time"
-            value={timing.totalBlockingTime ?? null}
-            unit="ms"
-            description="Sum of blocking time on main thread"
-            important
-          />
-          <TimingCard
-            metric="Cumulative Layout Shift"
-            value={timing.cumulativeLayoutShift ?? null}
-            unit=""
-            description="Unexpected layout shifts during loading"
-            important
-          />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-lg font-medium">Resource Summary</h2>
+      {/* Render scores section conditionally */}
+      {Object.keys(scores).length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <ResourceSummaryCard
-            title="Total Resources"
-            count={resources.total ?? 'N/A'}
-            icon={<FileCode className="h-5 w-5" />}
+          <MetricCard 
+            title="Performance" 
+            score={typeof scores.performance === 'number' ? scores.performance : null} 
+            icon={<Zap className="h-5 w-5" />}
+            description="Page speed & loading"
           />
-          {resources.byType && typeof resources.byType === 'object' && Object.entries(resources.byType).map(([type, count]) => (
-            <ResourceSummaryCard
-              key={type}
-              title={capitalizeFirstLetter(type)}
-              count={count}
-              icon={getResourceIcon(type)}
-            />
-          ))}
-          <ResourceSummaryCard
-            title="Total Size"
-            count={typeof resources.transferSize === 'number' ? `${(resources.transferSize / (1024 * 1024)).toFixed(2)} MB` : 'N/A'}
-            icon={<FileCode className="h-5 w-5" />}
+          <MetricCard 
+            title="Accessibility" 
+            score={typeof scores.accessibility === 'number' ? scores.accessibility : null} 
+            icon={<LayoutGrid className="h-5 w-5" />}
+            description="Usability for all users"
+          />
+          <MetricCard 
+            title="SEO" 
+            score={typeof scores.seo === 'number' ? scores.seo : null} 
+            icon={<Search className="h-5 w-5" />}
+            description="Search engine optimization"
+          />
+          <MetricCard 
+            title="Best Practices" 
+            score={typeof scores.bestPractices === 'number' ? scores.bestPractices : null} 
+            icon={<Code2 className="h-5 w-5" />}
+            description="Web development standards"
           />
         </div>
-      </div>
+      )}
 
+      {/* Render timing section conditionally */}
+      {Object.keys(timing).length > 0 && (
+        <div className="space-y-4">
+          <h2 className="text-lg font-medium">Key Performance Metrics</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <TimingCard
+              metric="First Contentful Paint"
+              value={timing.firstContentfulPaint ?? null}
+              unit="ms"
+              description="Time until first content is painted"
+            />
+            <TimingCard
+              metric="Largest Contentful Paint"
+              value={timing.largestContentfulPaint ?? null}
+              unit="ms"
+              description="Time until largest content is painted"
+              important
+            />
+            <TimingCard
+              metric="Time to Interactive"
+              value={timing.timeToInteractive ?? null}
+              unit="ms"
+              description="Time until page is fully interactive"
+            />
+            <TimingCard
+              metric="Speed Index"
+              value={timing.speedIndex ?? null}
+              unit="ms"
+              description="How quickly content is visually displayed"
+            />
+            <TimingCard
+              metric="Total Blocking Time"
+              value={timing.totalBlockingTime ?? null}
+              unit="ms"
+              description="Sum of blocking time on main thread"
+              important
+            />
+            <TimingCard
+              metric="Cumulative Layout Shift"
+              value={timing.cumulativeLayoutShift ?? null}
+              unit=""
+              description="Unexpected layout shifts during loading"
+              important
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Render resources section conditionally */}
+      {Object.keys(resources).length > 0 && (
+        <div className="space-y-4">
+          <h2 className="text-lg font-medium">Resource Summary</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <ResourceSummaryCard
+              title="Total Resources"
+              count={resources.total ?? 'N/A'}
+              icon={<FileCode className="h-5 w-5" />}
+            />
+            {resources.byType && typeof resources.byType === 'object' && Object.entries(resources.byType).map(([type, count]) => (
+              <ResourceSummaryCard
+                key={type}
+                title={capitalizeFirstLetter(type)}
+                count={count}
+                icon={getResourceIcon(type)}
+              />
+            ))}
+            <ResourceSummaryCard
+              title="Total Size"
+              count={typeof resources.transferSize === 'number' ? formatBytes(resources.transferSize) : 'N/A'}
+              icon={<FileCode className="h-5 w-5" />}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Show errors only if they exist */}
       {Array.isArray(errors) && errors.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-lg font-medium">Errors</h2>
@@ -166,19 +181,21 @@ export default function PerformanceDetails({ results }: PerformanceDetailsProps)
         </div>
       )}
 
-      <Tabs defaultValue="performance" className="w-full">
-        <TabsList className="grid grid-cols-4 mb-4">
-          <TabsTrigger value="performance">Performance</TabsTrigger>
-          <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
-          <TabsTrigger value="best-practices">Best Practices</TabsTrigger>
-          <TabsTrigger value="seo">SEO</TabsTrigger>
-        </TabsList>
-        
-        {Object.entries(groupedAudits).length > 0 ? (
-          Object.entries(groupedAudits).map(([category, audits]) => (
+      {/* Only show audit tabs if there are audits to display */}
+      {Object.keys(groupedAudits).length > 0 && (
+        <Tabs defaultValue="performance" className="w-full">
+          <TabsList className="grid grid-cols-4 mb-4">
+            <TabsTrigger value="performance">Performance</TabsTrigger>
+            <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
+            <TabsTrigger value="best-practices">Best Practices</TabsTrigger>
+            <TabsTrigger value="seo">SEO</TabsTrigger>
+          </TabsList>
+          
+          {Object.entries(groupedAudits).map(([category, audits]) => (
             <TabsContent key={category} value={category} className="space-y-4">
               <Accordion type="single" collapsible>
                 {audits
+                  .filter(audit => audit && typeof audit === 'object')
                   .sort((a, b) => {
                     // Sort null scores to the bottom
                     if (a.score === null && b.score !== null) return 1;
@@ -188,12 +205,12 @@ export default function PerformanceDetails({ results }: PerformanceDetailsProps)
                     return 0;
                   })
                   .map(audit => (
-                    <AccordionItem key={audit.id} value={audit.id}>
+                    <AccordionItem key={audit.id || Math.random().toString()} value={audit.id || Math.random().toString()}>
                       <AccordionTrigger>
                         <div className="flex items-center justify-between w-full pr-4">
                           <div className="flex items-center gap-2">
                             <AuditStatusIndicator score={audit.score} />
-                            <span>{audit.title}</span>
+                            <span>{audit.title || 'Unnamed audit'}</span>
                           </div>
                           {audit.displayValue && (
                             <span className="text-xs text-muted-foreground">{audit.displayValue}</span>
@@ -255,15 +272,11 @@ export default function PerformanceDetails({ results }: PerformanceDetailsProps)
                   ))}
               </Accordion>
             </TabsContent>
-          ))
-        ) : (
-          <TabsContent value="performance" className="space-y-4">
-            <div className="text-center text-muted-foreground">No audit data available.</div>
-          </TabsContent>
-        )}
-      </Tabs>
+          ))}
+        </Tabs>
+      )}
 
-      {Array.isArray(screenshots.thumbnails) && screenshots.thumbnails.length > 0 ? (
+      {screenshots?.thumbnails && Array.isArray(screenshots.thumbnails) && screenshots.thumbnails.length > 0 ? (
         <div className="space-y-4">
           <h2 className="text-lg font-medium">Page Load Filmstrip</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -282,7 +295,10 @@ export default function PerformanceDetails({ results }: PerformanceDetailsProps)
           </div>
         </div>
       ) : (
-        <div className="text-center text-muted-foreground">No filmstrip available.</div>
+        <div className="p-6 border border-dashed rounded-md text-center text-muted-foreground space-y-2">
+          <p>No filmstrip available for this page.</p>
+          <p className="text-sm">This might be due to a faster page load, a server configuration, or screenshots being disabled.</p>
+        </div>
       )}
     </div>
   );
@@ -467,7 +483,9 @@ function formatAuditValue(value: any): React.ReactNode {
 }
 
 function formatBytes(bytes: number): string {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
-  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 } 

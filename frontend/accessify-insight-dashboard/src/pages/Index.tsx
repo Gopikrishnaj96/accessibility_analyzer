@@ -24,14 +24,19 @@ const Dashboard = () => {
     accessResults: AccessibilityTestResult,
     lighthouseResults: LighthouseTestResult
   ) => {
+    // Safely get accessibility score from either format (summary or axeSummary)
+    const accessibilityScore = accessResults.axeSummary?.score ?? 
+                              accessResults.summary?.score ?? 
+                              0;
+                              
     setLatestScan({
       url: accessResults.url,
       date: new Date(accessResults.timestamp).toLocaleDateString(),
-      accessibilityScore: accessResults.summary.score,
+      accessibilityScore: accessibilityScore,
       lighthouseScores: {
-        performance: lighthouseResults.scores.performance,
-        seo: lighthouseResults.scores.seo,
-        bestPractices: lighthouseResults.scores.bestPractices,
+        performance: lighthouseResults?.scores?.performance ?? 0,
+        seo: lighthouseResults?.scores?.seo ?? 0,
+        bestPractices: lighthouseResults?.scores?.bestPractices ?? 0,
       }
     });
   };

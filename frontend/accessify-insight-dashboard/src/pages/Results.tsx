@@ -10,6 +10,7 @@ import AccessibilityDetails from '@/components/results/AccessibilityDetails';
 import PerformanceDetails from '@/components/results/PerformanceDetails';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 const Results = () => {
   const [accessResults, setAccessResults] = useState<AccessibilityTestResult | null>(null);
@@ -24,29 +25,53 @@ const Results = () => {
     setError(null);
     
     try {
-      const storedAccessResults = sessionStorage.getItem('accessibilityResults');
-      const storedLighthouseResults = sessionStorage.getItem('lighthouseResults');
+      // Safely get and parse data from session storage
+      const safeGetStorageItem = (key: string) => {
+        try {
+          const item = sessionStorage.getItem(key);
+          if (!item) return null;
+          
+          try {
+            return JSON.parse(item);
+          } catch (parseError) {
+            console.error(`Error parsing ${key} from session storage:`, parseError);
+            return null;
+          }
+        } catch (e) {
+          console.error(`Error accessing ${key} from session storage:`, e);
+          return null;
+        }
+      };
       
-      if (!storedAccessResults || !storedLighthouseResults) {
+      const parsedAccessResults = safeGetStorageItem('accessibilityResults');
+      const parsedLighthouseResults = safeGetStorageItem('lighthouseResults');
+      
+      // Check if we have at least one type of results
+      if (!parsedAccessResults && !parsedLighthouseResults) {
+        setError('No scan results found. Please run a scan first.');
         toast.error('No scan results found');
         navigate('/');
         return;
       }
-
-      const parsedAccessResults = JSON.parse(storedAccessResults);
-      const parsedLighthouseResults = JSON.parse(storedLighthouseResults);
       
-      if (!parsedAccessResults || !parsedLighthouseResults) {
-        toast.error('Invalid scan results format');
-        navigate('/');
-        return;
+      // Update state with the parsed results
+      if (parsedAccessResults && typeof parsedAccessResults === 'object') {
+        setAccessResults(parsedAccessResults);
       }
-
-      setAccessResults(parsedAccessResults);
-      setLighthouseResults(parsedLighthouseResults);
+      
+      if (parsedLighthouseResults && typeof parsedLighthouseResults === 'object') {
+        setLighthouseResults(parsedLighthouseResults);
+      }
+      
+      // Show notification if we only have partial results
+      if (parsedAccessResults && !parsedLighthouseResults) {
+        toast.warning('Only accessibility results are available');
+      } else if (!parsedAccessResults && parsedLighthouseResults) {
+        toast.warning('Only performance results are available');
+      }
     } catch (err) {
       console.error('Error loading results:', err);
-      setError(err instanceof Error ? err.message : 'Failed to load results');
+      setError('Failed to load results. Please try running a new scan.');
       toast.error('Failed to load scan results');
     } finally {
       setIsLoading(false);
@@ -55,40 +80,9 @@ const Results = () => {
   
   useEffect(() => {
     loadResults();
-    
-    // Add event listener for storage changes
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'accessibilityResults' || e.key === 'lighthouseResults') {
-        loadResults();
-      }
-    };
-    
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Set up an interval to check for updates
-    const checkInterval = setInterval(() => {
-      const currentAccessResults = sessionStorage.getItem('accessibilityResults');
-      const currentLighthouseResults = sessionStorage.getItem('lighthouseResults');
-      
-      if (currentAccessResults && currentLighthouseResults) {
-        const parsedAccess = JSON.parse(currentAccessResults);
-        const parsedLighthouse = JSON.parse(currentLighthouseResults);
-        
-        // Only update if the results are different
-        if (JSON.stringify(parsedAccess) !== JSON.stringify(accessResults) ||
-            JSON.stringify(parsedLighthouse) !== JSON.stringify(lighthouseResults)) {
-          setAccessResults(parsedAccess);
-          setLighthouseResults(parsedLighthouse);
-        }
-      }
-    }, 1000); // Check every second
-    
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      clearInterval(checkInterval);
-    };
   }, [loadResults, location.key]);
 
+  // Render the appropriate UI based on the current state
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col">
@@ -102,13 +96,13 @@ const Results = () => {
     );
   }
 
-  if (error || !accessResults) {
+  if (error && !accessResults && !lighthouseResults) {
     return (
       <div className="min-h-screen flex flex-col">
         <MainNav />
         <PageContainer title="Error">
           <div className="text-center p-8 text-destructive">
-            <p>{error || 'Failed to load results'}</p>
+            <p>{error}</p>
             <Button 
               variant="outline" 
               onClick={() => navigate('/')}
@@ -122,45 +116,72 @@ const Results = () => {
     );
   }
 
+  // Get the URL and timestamp for display
+  const url = accessResults?.url || lighthouseResults?.url || 'Unknown URL';
+  const timestamp = accessResults?.timestamp || lighthouseResults?.timestamp || new Date().toISOString();
+
+  // Set default active tab based on available data
+  const defaultTab = accessResults ? 'accessibility' : 'performance';
+
   return (
     <div className="min-h-screen flex flex-col">
       <MainNav />
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <PageContainer
-          title="Analysis Results"
-          description={`${accessResults.url} - ${new Date(accessResults.timestamp).toLocaleString()}`}
+      <ErrorBoundary>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="mb-6">
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate('/')}
-              className="flex items-center gap-1"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Dashboard
-            </Button>
-          </div>
-          
-          <Tabs defaultValue="accessibility" className="w-full">
-            <TabsList className="grid grid-cols-2 mb-6 w-[400px] max-w-full">
-              <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
-              <TabsTrigger value="performance">Performance</TabsTrigger>
-            </TabsList>
+          <PageContainer
+            title="Analysis Results"
+            description={`${url} - ${new Date(timestamp).toLocaleString()}`}
+          >
+            <div className="mb-6">
+              <Button 
+                variant="ghost" 
+                onClick={() => navigate('/')}
+                className="flex items-center gap-1"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Dashboard
+              </Button>
+            </div>
             
-            <TabsContent value="accessibility" className="space-y-6">
-              <AccessibilityDetails results={accessResults} />
-            </TabsContent>
-            
-            <TabsContent value="performance" className="space-y-6">
-              <PerformanceDetails results={lighthouseResults} />
-            </TabsContent>
-          </Tabs>
-        </PageContainer>
-      </motion.div>
+            <Tabs defaultValue={defaultTab} className="w-full">
+              <TabsList className="grid grid-cols-2 mb-6 w-[400px] max-w-full">
+                <TabsTrigger 
+                  value="accessibility" 
+                  disabled={!accessResults}
+                  title={!accessResults ? "No accessibility data available" : ""}
+                >
+                  Accessibility
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="performance" 
+                  disabled={!lighthouseResults}
+                  title={!lighthouseResults ? "No performance data available" : ""}
+                >
+                  Performance
+                </TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="accessibility" className="space-y-6">
+                {accessResults ? (
+                  <AccessibilityDetails results={accessResults} />
+                ) : (
+                  <div className="p-6 text-center text-muted-foreground">
+                    <p>No accessibility data available for this scan.</p>
+                  </div>
+                )}
+              </TabsContent>
+              
+              <TabsContent value="performance" className="space-y-6">
+                <PerformanceDetails results={lighthouseResults} />
+              </TabsContent>
+            </Tabs>
+          </PageContainer>
+        </motion.div>
+      </ErrorBoundary>
     </div>
   );
 };

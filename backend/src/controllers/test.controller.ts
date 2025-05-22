@@ -130,6 +130,8 @@ export const runLighthouseTest = async (req: Request, res: Response) => {
         timing: results.timing,
         resources: results.resources
       },
+      lighthouseOpportunities: results.opportunities,
+      lighthouseDiagnostics: results.diagnostics,
       testEngine: {
         name: 'lighthouse',
         version: results.lighthouseVersion
@@ -142,7 +144,9 @@ export const runLighthouseTest = async (req: Request, res: Response) => {
       timestamp: testResult.timestamp,
       testType: 'lighthouse',
       scores: testResult.lighthouseScores,
-      metrics: testResult.lighthouseMetrics
+      metrics: testResult.lighthouseMetrics,
+      opportunities: testResult.lighthouseOpportunities,
+      diagnostics: testResult.lighthouseDiagnostics
     });
 
   } catch (error) {
@@ -152,4 +156,89 @@ export const runLighthouseTest = async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
+};
+
+interface AnalysisOptions {
+  axe?: boolean;
+  lighthouse?: boolean;
+  enhanced?: boolean;
+}
+
+export const runFullAnalysis = async (req: Request, res: Response) => {
+  try {
+    const { url, options } = req.body;
+    const { axe = true, lighthouse = true, enhanced = false }: AnalysisOptions = req.query;
+
+    if (!url || typeof url !== 'string' || !url.match(/^https?:\/\/.+/)) {
+      return res.status(400).json({ error: 'Valid URL required' });
+    }
+
+    // Run analyses in parallel
+    const [axeResult, lighthouseResult] = await Promise.all([
+      axe ? runAxeAnalysis(url, enhanced) : Promise.resolve(null),
+      lighthouse ? lighthouseService.runLighthouse(url) : Promise.resolve(null)
+    ]);
+
+    // Save combined results
+    const testResult = await TestResult.create({
+      url,
+      testType: 'combined',
+      axeSummary: axeResult?.summary,
+      axeResults: axeResult?.results,
+      lighthouseScores: lighthouseResult?.scores,
+      lighthouseMetrics: lighthouseResult?.timing,
+      testEngine: {
+        axeVersion: axeResult?.testEngine.version || 'N/A',
+        lighthouseVersion: lighthouseResult?.lighthouseVersion || 'N/A'
+      }
+    });
+
+    res.status(201).json({
+      id: testResult._id,
+      url: testResult.url,
+      axe: axeResult,
+      lighthouse: lighthouseResult,
+      timestamp: testResult.timestamp
+    });
+
+  } catch (error) {
+    console.error('Combined analysis error:', error);
+    res.status(500).json({ 
+      error: 'Analysis failed',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+};
+
+// Helper function for axe analysis
+const runAxeAnalysis = async (url: string, enhanced: boolean) => {
+  const service = enhanced ? new EnhancedAxeService() : new AxeService();
+  
+  // Pass some default rules or don't specify rules at all
+  const options = {
+    // If you want specific rules, add them here:
+    // rules: ['color-contrast', 'image-alt', 'heading-order']
+  };
+  
+  const results = await service.testUrl(url, options);
+  
+  return {
+    summary: {
+      violations: results.violations.length,
+      passes: results.passes.length,
+      score: Math.round((results.passes.length / (results.passes.length + results.violations.length || 1)) * 100)
+    },
+    results: enhanced ? 
+      results.violations.map(v => ({ ...v, wcagCriteria: (v as any).wcagCriteria })) 
+      : results,
+    testEngine: results.testEngine
+  };
+};
+
+export default {
+  runTest,
+  getTestResult,
+  getTestHistory,
+  runLighthouseTest,
+  runFullAnalysis
 };

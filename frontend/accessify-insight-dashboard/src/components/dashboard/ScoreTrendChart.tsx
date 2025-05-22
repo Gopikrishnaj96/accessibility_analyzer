@@ -31,10 +31,10 @@ const ScoreTrendChart = ({ title, description, url }: ScoreTrendChartProps) => {
     enabled: !!url,
   });
 
-  // Format data for the chart
+  // Format data for the chart - safely access score from any available source
   const chartData = history?.map(item => ({
     date: format(parseISO(item.timestamp), 'MMM d'),
-    score: item.summary.score,
+    score: item.axeSummary?.score ?? item.summary?.score ?? 0,
   })) || [];
 
   return (
